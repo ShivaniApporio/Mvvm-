@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data >
+
+        <variable
+            name="viewModel"
+            type="com.example.lenovo.assignmentsec.viewmodel.ViewModal" />
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/inEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:afterTextChanged="@{(text)->viewModel.afterEmailTextChanged(text)}"
+                android:hint="@{viewModel.hintEmail}"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/inPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:afterTextChanged="@{(editable)->viewModel.afterPasswordTextChanged(editable)}"
+                android:hint="@{viewModel.hintPassword}"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:layout_marginTop="20dp"/>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:onClick="@{()-> viewModel.onLoginClicked()}"
+                android:text="LOGIN"
+                app:toastMessage="@{viewModel.toastMessage}" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
